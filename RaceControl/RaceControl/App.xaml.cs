@@ -50,7 +50,7 @@ public partial class App
         registry.RegisterDialog<UpgradeDialog, UpgradeDialogViewModel>();
         registry.RegisterDialog<DownloadDialog, DownloadDialogViewModel>();
         registry.RegisterDialog<VideoDialog, VideoDialogViewModel>();
-        registry.RegisterDialog<WebVideoDialog, VideoDialogViewModel>();
+        registry.RegisterDialog<WebVideoDialog, WebVideoDialogViewModel>();
 
         registry
             .RegisterSingleton<IExtendedDialogService, ExtendedDialogService>()

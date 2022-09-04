@@ -47,7 +47,7 @@ public abstract class DialogViewModelBase : ViewModelBase, IDialogAware
     }
 
     protected void RaiseRequestClose()
-    {
+    {        
         RaiseRequestClose(null);
     }
 

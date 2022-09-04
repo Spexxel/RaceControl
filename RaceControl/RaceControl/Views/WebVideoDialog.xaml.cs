@@ -26,7 +26,7 @@ public partial class WebVideoDialog
 
     private void InitializeWebViewSuccess()
     {        
-        var data = DataContext as VideoDialogViewModel;
+        var data = DataContext as WebVideoDialogViewModel;
         var uri = BuildContentUri(data.PlayableContent);
         WebView2.Source = uri;
     }
@@ -37,7 +37,7 @@ public partial class WebVideoDialog
         var path = Path.Combine(app, "Scripts/strip.js");
         var script = File.ReadAllText(path);
 
-        WebView2.ExecuteScriptAsync(script);
+        WebView2.ExecuteScriptAsync(script);        
     }
 
     private void InitializeWebViewFailed(Exception ex)
