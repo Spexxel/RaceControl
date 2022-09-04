@@ -23,13 +23,21 @@ function removeNonPlayerElements() {
     removeAllInCollection(header);
 
     // Remove bottom container
-    document.querySelector("#app > div > main > div:nth-child(2)").remove();
+    removeIfPresent("#app > div > main > div:nth-child(2)");
 
     // Remove info text
-    document.querySelector("#app > div > main > div > div > div > div > div.p-0.container-lg").remove();
+    removeIfPresent("#app > div > main > div > div > div > div > div.p-0.container-lg");
 
     // Remove video player static image
-    document.querySelector(".inset-video-item-image.w-100.img-loaded").remove();
+    removeIfPresent(".inset-video-item-image.w-100.img-loaded");    
+}
+
+function removeIfPresent(selector) {
+    var el = document.querySelector(selector);
+
+    if (el) {
+        el.remove();
+    }
 }
 
 function removeAllClassesInChilds(element) {

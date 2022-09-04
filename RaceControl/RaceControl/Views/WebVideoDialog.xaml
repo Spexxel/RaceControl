@@ -10,7 +10,7 @@
     xmlns:prism="http://prismlibrary.com/"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
     prism:ViewModelLocator.AutoWireViewModel="True"
-    Loaded="LoginDialogLoaded">
+    Loaded="WebDialogLoaded">
     <prism:Dialog.WindowStyle>
         <Style TargetType="Window">
             <Setter Property="prism:Dialog.WindowStartupLocation" Value="{Binding StartupLocation}" />

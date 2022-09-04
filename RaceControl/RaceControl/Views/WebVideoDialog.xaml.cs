@@ -1,5 +1,5 @@
 ﻿using Microsoft.Web.WebView2.Core;
-using System;
+using RaceControl.ViewModels;
 
 namespace RaceControl.Views;
 
@@ -12,7 +12,7 @@ public partial class WebVideoDialog
         InitializeComponent();
         _logger = logger;
     }
-    private void LoginDialogLoaded(object sender, RoutedEventArgs e)
+    private void WebDialogLoaded(object sender, RoutedEventArgs e)
     {
         InitializeWebViewAsync().Await(InitializeWebViewSuccess, InitializeWebViewFailed, true);
     }
@@ -25,8 +25,10 @@ public partial class WebVideoDialog
     }
 
     private void InitializeWebViewSuccess()
-    {
-        WebView2.Source = new Uri("https://f1tv.formula1.com/detail/1000005195/2022-dutch-gp-practice-2?action=play");
+    {        
+        var data = DataContext as VideoDialogViewModel;
+        var uri = BuildContentUri(data.PlayableContent);
+        WebView2.Source = uri;
     }
 
     private void NavigationComplete(object sender, CoreWebView2NavigationCompletedEventArgs e)
@@ -36,7 +38,6 @@ public partial class WebVideoDialog
         var script = File.ReadAllText(path);
 
         WebView2.ExecuteScriptAsync(script);
-        //WebView2.ExecuteScriptAsync("window.addEventListener('contextmenu', window => {window.preventDefault();});");
     }
 
     private void InitializeWebViewFailed(Exception ex)
@@ -44,8 +45,12 @@ public partial class WebVideoDialog
         _logger.Error(ex, "An error occurred while initializing webview.");
     }
 
-    private void WebView2_NavigationCompleted(object sender, CoreWebView2NavigationCompletedEventArgs e)
+    private static Uri BuildContentUri(IPlayableContent content)
     {
+        var contentId = content.SyncUID;
+        var title = content.Title.Replace(' ', '-');
+        var uriString = $"https://f1tv.formula1.com/detail/{contentId}/{title}?action=play";
 
+        return new(uriString);
     }
 }
