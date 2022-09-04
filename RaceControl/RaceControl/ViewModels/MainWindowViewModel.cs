@@ -881,7 +881,7 @@ public class MainWindowViewModel : ViewModelBase, ICloseWindow
                 { ParameterNames.Settings, settings }
             };
 
-        _dialogService.Show(nameof(VideoDialog), parameters, _ => _numberGenerator.RemoveNumber(identifier), nameof(VideoDialogWindow));
+        _dialogService.Show(nameof(WebVideoDialog), parameters, _ => _numberGenerator.RemoveNumber(identifier), nameof(VideoDialogWindow));
     }
 
     private async Task WatchInVlcAsync(IPlayableContent playableContent)

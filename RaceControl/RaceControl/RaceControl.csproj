@@ -35,6 +35,7 @@
     <None Remove="Icons\synchronize_48px.png" />
     <None Remove="Icons\windowed_96px.png" />
     <None Remove="livesession.wav" />
+    <None Remove="Scripts\rebuild.js" />
     <None Remove="splashscreen.png" />
   </ItemGroup>
   <ItemGroup>
@@ -43,6 +44,9 @@
   <ItemGroup>
     <Content Include="livesession.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\rebuild.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
@@ -80,5 +84,10 @@
     <ProjectReference Include="..\RaceControl.Libs\RaceControl.Libs.csproj" />
     <ProjectReference Include="..\Services\RaceControl.Services.Interfaces\RaceControl.Services.Interfaces.csproj" />
     <ProjectReference Include="..\Services\RaceControl.Services\RaceControl.Services.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\WebVideoDialog.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
   </ItemGroup>
 </Project>
