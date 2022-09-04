@@ -881,7 +881,17 @@ public class MainWindowViewModel : ViewModelBase, ICloseWindow
                 { ParameterNames.Settings, settings }
             };
 
-        _dialogService.Show(nameof(WebVideoDialog), parameters, _ => _numberGenerator.RemoveNumber(identifier), nameof(VideoDialogWindow));
+        var streamUrl = _apiService.GetTokenisedUrlAsync(Settings.SubscriptionToken, playableContent).Result;
+        var playtoken = _apiService.GetPlayTokenAsync(streamUrl);
+
+        if (playableContent.IsLive || playtoken is null)
+        {
+            _dialogService.Show(nameof(WebVideoDialog), parameters, _ => _numberGenerator.RemoveNumber(identifier), nameof(VideoDialogWindow));
+        }
+        else
+        {
+            _dialogService.Show(nameof(VideoDialog), parameters, _ => _numberGenerator.RemoveNumber(identifier), nameof(VideoDialogWindow));
+        }
     }
 
     private async Task WatchInVlcAsync(IPlayableContent playableContent)
