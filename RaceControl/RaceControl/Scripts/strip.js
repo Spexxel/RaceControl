@@ -5,6 +5,12 @@ waitForElm(playerSelector).then((elm) => {
     removeNonPlayerElements();
     var app = document.getElementById("app");
     removeAllClassesInChilds(app);
+
+    // Remove video player static image
+    var staticImage = ".inset-video-item-image.w-100.img-loaded";
+    waitForElm(staticImage).then((img) => {
+        img.remove();
+    });
 });
 
 
@@ -27,9 +33,6 @@ function removeNonPlayerElements() {
 
     // Remove info text
     removeIfPresent("#app > div > main > div > div > div > div > div.p-0.container-lg");
-
-    // Remove video player static image
-    removeIfPresent(".inset-video-item-image.w-100.img-loaded");    
 }
 
 function removeIfPresent(selector) {
