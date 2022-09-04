@@ -32,7 +32,7 @@ public partial class WebVideoDialog
     private void NavigationComplete(object sender, CoreWebView2NavigationCompletedEventArgs e)
     {
         var app = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-        var path = Path.Combine(app, "Scripts/rebuild.js");
+        var path = Path.Combine(app, "Scripts/strip.js");
         var script = File.ReadAllText(path);
 
         WebView2.ExecuteScriptAsync(script);

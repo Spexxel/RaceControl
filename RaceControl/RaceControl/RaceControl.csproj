@@ -35,7 +35,7 @@
     <None Remove="Icons\synchronize_48px.png" />
     <None Remove="Icons\windowed_96px.png" />
     <None Remove="livesession.wav" />
-    <None Remove="Scripts\rebuild.js" />
+    <None Remove="Scripts\strip.js" />
     <None Remove="splashscreen.png" />
   </ItemGroup>
   <ItemGroup>
@@ -45,7 +45,7 @@
     <Content Include="livesession.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\rebuild.js">
+    <Content Include="Scripts\strip.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
