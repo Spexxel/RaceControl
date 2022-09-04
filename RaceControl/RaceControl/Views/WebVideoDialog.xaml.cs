@@ -12,6 +12,7 @@ public partial class WebVideoDialog
         InitializeComponent();
         _logger = logger;
     }
+
     private void WebDialogLoaded(object sender, RoutedEventArgs e)
     {
         InitializeWebViewAsync().Await(InitializeWebViewSuccess, InitializeWebViewFailed, true);

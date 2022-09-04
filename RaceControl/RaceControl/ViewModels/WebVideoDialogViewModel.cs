@@ -64,7 +64,7 @@ public class WebVideoDialogViewModel : DialogViewModelBase
         _settings = settings;
         _apiService = apiService;
         _videoDialogLayout = videoDialogLayout;
-        MediaPlayer = mediaPlayer;
+        MediaPlayer = mediaPlayer;        
     }
 
     public override string Title => $"{_identifier}. {PlayableContent?.Title}";
@@ -159,6 +159,7 @@ public class WebVideoDialogViewModel : DialogViewModelBase
 
     public override void OnDialogOpened(IDialogParameters parameters)
     {
+        CanClose = true;
         _identifier = parameters.GetValue<long>(ParameterNames.Identifier);
         PlayableContent = parameters.GetValue<IPlayableContent>(ParameterNames.Content);
 

@@ -882,9 +882,8 @@ public class MainWindowViewModel : ViewModelBase, ICloseWindow
             };
 
         var streamUrl = _apiService.GetTokenisedUrlAsync(Settings.SubscriptionToken, playableContent).Result;
-        var playtoken = _apiService.GetPlayTokenAsync(streamUrl);
 
-        if (playableContent.IsLive || playtoken is null)
+        if (playableContent.IsLive || streamUrl.Contains("index.mpd"))
         {
             _dialogService.Show(nameof(WebVideoDialog), parameters, _ => _numberGenerator.RemoveNumber(identifier), nameof(VideoDialogWindow));
         }

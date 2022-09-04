@@ -26,6 +26,7 @@
         </Style>
     </prism:Dialog.WindowStyle>
     <wv2:WebView2 Name="WebView2" Grid.Row="1" NavigationCompleted="NavigationComplete">
+
     </wv2:WebView2>
 
 </UserControl>
