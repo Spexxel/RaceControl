@@ -883,7 +883,7 @@ public class MainWindowViewModel : ViewModelBase, ICloseWindow
 
         var streamUrl = _apiService.GetTokenisedUrlAsync(Settings.SubscriptionToken, playableContent).Result;
 
-        if (playableContent.IsLive || streamUrl.Contains("index.mpd"))
+        if ((playableContent.IsLive || streamUrl.Contains("index.mpd")) && Settings.EnableMpvAutoSync)
         {
             _dialogService.Show(nameof(WebVideoDialog), parameters, _ => _numberGenerator.RemoveNumber(identifier), nameof(VideoDialogWindow));
         }

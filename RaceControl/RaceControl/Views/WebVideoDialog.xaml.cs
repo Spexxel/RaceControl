@@ -23,10 +23,13 @@ public partial class WebVideoDialog
         var userDataFolder = FolderUtils.GetWebView2UserDataPath();
         var environment = await CoreWebView2Environment.CreateAsync(userDataFolder: userDataFolder);
         await WebView2.EnsureCoreWebView2Async(environment);
+
+        var window = Window.GetWindow(this);
+        window.Closing += OnClosing;
     }
 
     private void InitializeWebViewSuccess()
-    {        
+    {
         var data = DataContext as WebVideoDialogViewModel;
         var uri = BuildContentUri(data.PlayableContent);
         WebView2.Source = uri;
@@ -41,6 +44,11 @@ public partial class WebVideoDialog
         WebView2.ExecuteScriptAsync(script);        
     }
 
+    private void OnClosing(object sender, CancelEventArgs e)
+    {
+        WebView2.Dispose();
+    }
+    
     private void InitializeWebViewFailed(Exception ex)
     {
         _logger.Error(ex, "An error occurred while initializing webview.");
