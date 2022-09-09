@@ -6,6 +6,7 @@ namespace RaceControl.Views;
 public partial class WebVideoDialog
 {
     private readonly ILogger _logger;
+    private const string BaseStreamUrl = "https://f1tv.formula1.com/detail/";
 
     public WebVideoDialog(ILogger logger)
     {
@@ -58,7 +59,7 @@ public partial class WebVideoDialog
     {
         var contentId = content.SyncUID;
         var title = content.Title.Replace(' ', '-');
-        var uriString = $"https://f1tv.formula1.com/detail/{contentId}/{title}?action=play";
+        var uriString = $"{BaseStreamUrl}{contentId}/{title}?action=play";
 
         return new(uriString);
     }
