@@ -18,6 +18,7 @@ public class Settings : BindableBase, ISettings
     private bool _disableLiveSessionNotification;
     private bool _disableMpvNoBorder;
     private bool _enableMpvAutoSync;
+    private bool _enableWebplayerForEncrypted;
     private string _additionalMpvParameters;
     private string _customMpvPath;
     private string _latestRelease;
@@ -94,6 +95,12 @@ public class Settings : BindableBase, ISettings
     {
         get => _enableMpvAutoSync;
         set => SetProperty(ref _enableMpvAutoSync, value);
+    }
+
+    public bool EnableWebplayerForEncrypted
+    { 
+        get => _enableWebplayerForEncrypted;
+        set => SetProperty(ref _enableWebplayerForEncrypted, value);
     }
 
     public string AdditionalMpvParameters

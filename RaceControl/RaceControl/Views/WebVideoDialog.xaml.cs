@@ -35,6 +35,11 @@ public partial class WebVideoDialog
         WebView2.Source = uri;
     }
 
+    private void InitializeWebViewFailed(Exception ex)
+    {
+        _logger.Error(ex, "An error occurred while initializing webview.");
+    }
+
     private void NavigationComplete(object sender, CoreWebView2NavigationCompletedEventArgs e)
     {
         var app = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
@@ -47,12 +52,7 @@ public partial class WebVideoDialog
     private void OnClosing(object sender, CancelEventArgs e)
     {
         WebView2.Dispose();
-    }
-    
-    private void InitializeWebViewFailed(Exception ex)
-    {
-        _logger.Error(ex, "An error occurred while initializing webview.");
-    }
+    }    
 
     private static Uri BuildContentUri(IPlayableContent content)
     {

@@ -24,6 +24,8 @@ public interface ISettings
 
     bool EnableMpvAutoSync { get; set; }
 
+    bool EnableWebplayerForEncrypted { get; set; }
+
     string AdditionalMpvParameters { get; set; }
 
     string CustomMpvPath { get; set; }
